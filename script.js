@@ -48,25 +48,34 @@ $(function() {
 		;
   	}
 
-  	function createCard() {
-		var $card = $('<li>').addClass('card');
-		var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-		var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+  	function Card(description) {
+		var self = this;
 
-		$cardDelete.click(function(){
-        	self.removeCard();
-		});
+		this.id = randomString();
+		this.description = description;
+		this.$element = createCard(); //
 
-		$card.append($cardDelete)
-			.append($cardDescription);
+		function createCard() {
+	
+			var $card = $('<li>').addClass('card');
+			var $cardDescription = $('<p>').addClass('card-description').text(self.description);
+			var $cardDelete = $('<button>').addClass('btn-delete').text('x');
 
-		return $card;
 
-		Card.prototype = {
-			removeCard: function() {
-				this.$element.remove();
+			$cardDelete.click(function(){
+       			self.removeCard();
+			});
+
+
+			$card.append($cardDelete)
+				.append($cardDescription);
+
+				return $card;
 			}
-		}
+		Card.prototype.removeCard =function() {
+				this.$element.remove();
+			};
+		
 	}
 
 	var board = {
