@@ -112,8 +112,8 @@ $(function() {
 	board.addColumn(doneColumn);
 
 // TWORZENIE NOWYCH EGZEMPLARZY KART
-	var card1 = new Card('Nowe zadanie');
-	var card2 = new Card('Stworzyc tablice kanban');
+	//var card1 = new Card('Nowe zadanie');
+	//var card2 = new Card('Stworzyc tablice kanban');
 
 // DODAWANIE KART DO KOLUMN
 	todoColumn.addCard(card1);

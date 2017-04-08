@@ -1,0 +1,39 @@
+body {
+	background-color: cornsilk;
+}
+
+h1, h2 {
+	text-transform: uppercase;
+}
+h2 {
+	font-size: smaller;
+}
+
+button {
+	background-color: grey;
+	color: white;
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 10px;
+	margin: : 20px;
+}
+.board {
+	width: 80%;
+	max-width: 1100px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.column-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	text-align: center;
+}
+.column {
+	padding: 10px;
+	margin: 10px;
+	background-color: white;
+	border: 2px solid pink;
+	text-align: center;
+}
