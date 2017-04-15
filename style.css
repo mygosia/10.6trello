@@ -37,3 +37,7 @@ button {
 	border: 2px solid pink;
 	text-align: center;
 }
+
+ul {
+	min-height: 100px;
+}

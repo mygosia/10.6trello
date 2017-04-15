@@ -16,18 +16,23 @@ $(function() {
     	this.$element = createColumn();
 
     	function createColumn() {
-			var $column = $('<div>').addClass('column');
-			var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-			var $columnCardList = $('<ul>').addClass('column-card-list');
-			var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-			var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
+				var $column = $('<div>').addClass('column');
+				var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
+				var $columnCardList = $('<ul>').addClass('column-card-list');
+				var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+				var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
 
-			$columnDelete.click(function(){
-        		self.removeColumn();
+				$columnDelete.click(function(){
+	        		self.removeColumn();
 			});
 
 			$columnAddCard.click(function() {
-        		self.addCard(new Card(prompt("Wpisz nazwę karty")));
+					var cardText = prompt("Wpisz nazwę karty");
+					if(!cardText) {
+					alert("Nie podano nazwy karty! Spróbuj jeszcze raz");
+				} else {
+						self.addCard(new Card(cardText));
+				};
 			});
 
 			$column.append($columnTitle)
@@ -39,13 +44,12 @@ $(function() {
 		}
 
 		Column.prototype.addCard = function(card) {
-      			this.$element.children('ul').append(card.$element);
-    		};
+      	this.$element.children('ul').append(card.$element);
+    };
 
-    	Column.prototype.removeColumn = function() {
-      			this.$element.remove();
-    	}
-		;
+    Column.prototype.removeColumn = function() {
+      		this.$element.remove();
+    };
   	}
 
   	function Card(description) {
@@ -56,7 +60,7 @@ $(function() {
 		this.$element = createCard(); //
 
 		function createCard() {
-	
+
 			var $card = $('<li>').addClass('card');
 			var $cardDescription = $('<p>').addClass('card-description').text(self.description);
 			var $cardDelete = $('<button>').addClass('btn-delete').text('x');
@@ -75,7 +79,7 @@ $(function() {
 		Card.prototype.removeCard =function() {
 				this.$element.remove();
 			};
-		
+
 	}
 
 	var board = {
@@ -94,11 +98,14 @@ $(function() {
     	}).disableSelection();
   	}
 
-  	$('.create-column')
-  		.click(function(){
+  	$('.create-column').click(function(){
 			var name = prompt('Wpisz nazwę kolumny');
-			var column = new Column(name);
-    			board.addColumn(column);
+			if (!name) {
+				alert("Nie podano nazwy kolumny - spróbuj jeszcze raz");
+			} else {
+				var column = new Column(name);
+    		board.addColumn(column);
+				}
   		});
 
   	// TWORZENIE KOLUMN
